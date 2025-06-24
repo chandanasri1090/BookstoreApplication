@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;" data-bs-theme="light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">BookStore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">New Additions</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Books
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Fictional</a></li>
+            <li><a class="dropdown-item" href="#">Non-Fictional</a></li>
+            <li><a class="dropdown-item" href="#">Business Management</a></li>
+            <li><a class="dropdown-item" href="#">Featured Books</a></li>
+            <li><a class="dropdown-item" href="#">Young Adults</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Top 50</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Kids Books
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Child Mythology</a></li>
+            <li><a class="dropdown-item" href="#">Picture Books</a></li>
+            <li><a class="dropdown-item" href="#">Colouring & Art Books</a></li>
+            <li><a class="dropdown-item" href="#">Tales & Fales</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex">
+  <nav class="flex-column bg-dark text-white p-3 vh-100" style="width: 200px;">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item dropdown">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link dropdown-toggle" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Genre
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Non-Fictional</a></li>
+          <li><a class="dropdown-item" href="#">Business Management</a></li>
+          <li><a class="dropdown-item" href="#">Featured Books</a></li>
+          <li><a class="dropdown-item" href="#">Young Adults</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link dropdown-toggle" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Author
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Non-Fictional</a></li>
+          <li><a class="dropdown-item" href="#">Business Management</a></li>
+          <li><a class="dropdown-item" href="#">Featured Books</a></li>
+          <li><a class="dropdown-item" href="#">Young Adults</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link dropdown-toggle" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Price
+        </a>
+        <ul class="dropdown-menu">
+          <li><input type="checkbox"><a class="dropdown-item" href="#">Low-to-High</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
