@@ -32,4 +32,10 @@ public class BookstoreController {
     return ResponseEntity.ok().build();
 
   }
+
+  @PostMapping("/testBook")
+  public ResponseEntity<String> testBook(@RequestBody Book book){
+   return ResponseEntity.ok("Request reached the server");
+
+  }
 }
