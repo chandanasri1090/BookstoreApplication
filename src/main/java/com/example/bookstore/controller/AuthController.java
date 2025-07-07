@@ -21,6 +21,7 @@ public class AuthController {
 
     @GetMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) {
+        System.out.println("Request received");
         try {
             authManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
             return jwtUtil.generateToken(authRequest.getUsername());
