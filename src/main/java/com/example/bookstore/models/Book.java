@@ -22,5 +22,6 @@ public class Book {
   private String authorName;
   private String genre;
   private Integer price;
+  private Integer quantity;
 
 }

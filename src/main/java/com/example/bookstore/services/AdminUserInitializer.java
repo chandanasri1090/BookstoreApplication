@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.example.bookstore.models.Role;
 import com.example.bookstore.models.Users;
 import com.example.bookstore.repositories.UserDetailsRepository;
 
@@ -18,9 +19,17 @@ public class AdminUserInitializer {
                 Users user=new Users();
                 user.setUserName("admin");
                 user.setPassword(passwordEncoder.encode("admin123"));
-                user.setRole("ROLE_ADMIN");
+                user.setRole(Role.ADMIN);
                 userDetailsRepository.save(user);
-                System.err.println("Default User created");
+                System.out.println("Default User admin created");
+            }
+            if(userDetailsRepository.findByUserName("randomUser").isEmpty()){
+                Users user=new Users();
+                user.setUserName("randomUser");
+                user.setPassword(passwordEncoder.encode("randomUser123"));
+                user.setRole(Role.USER);
+                userDetailsRepository.save(user);
+                System.out.println("Random User created");
             }
 
         };

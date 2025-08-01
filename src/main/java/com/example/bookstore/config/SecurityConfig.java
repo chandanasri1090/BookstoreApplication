@@ -1,11 +1,13 @@
 package com.example.bookstore.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -20,6 +22,8 @@ import com.example.bookstore.services.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
+@EnableCaching
 public class SecurityConfig {
 
     @Autowired
@@ -27,13 +31,16 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        //Since JWT authentication is added requestMatchers should also be present in JWTAuthFilter
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
-                auth -> auth.requestMatchers("/h2-console","/authenticate").permitAll().anyRequest().authenticated());
+                auth -> auth.requestMatchers("/h2-console", "/authenticate", "/bookstore/users/registerUser")
+                        .permitAll().anyRequest().authenticated());
 
-        //For Basic authentication ------
-        //http.httpBasic(Customizer.withDefaults());
+        // For Basic authentication ------
+        // http.httpBasic(Customizer.withDefaults());
 
-        http.addFilterBefore(jwtAuthFilter , UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
